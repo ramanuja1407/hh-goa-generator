@@ -1917,3 +1917,151 @@ label {
   position: relative;
   z-index: 2;
 }
+/* =====================================================
+   MOBILE CARD FIX
+   Prevent stack tags from overlapping footer
+===================================================== */
+
+.id-card {
+  overflow: hidden;
+}
+
+.card-info {
+  position: relative;
+  z-index: 5;
+}
+
+.stack-tags {
+  position: relative;
+  z-index: 6;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+
+.stack-tags span {
+  position: relative;
+  z-index: 7;
+
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.builder-title {
+  position: relative;
+  z-index: 5;
+
+  margin-top: 10px;
+}
+
+.card-footer {
+  position: relative;
+  z-index: 10;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 18px;
+}
+
+.card-footer > div {
+  min-width: 0;
+}
+
+.card-footer span,
+.card-footer strong {
+  display: block;
+}
+
+.card-footer strong {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* =====================================================
+   PHONE SCREEN
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .id-card {
+    min-height: 620px;
+  }
+
+  .card-info {
+    margin-bottom: 20px;
+  }
+
+  .card-info h3 {
+    font-size: clamp(24px, 7vw, 38px);
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+
+  .stack-tags {
+    margin-top: 10px;
+    margin-bottom: 18px;
+    gap: 6px;
+  }
+
+  .stack-tags span {
+    font-size: 9px;
+    padding: 5px 8px;
+  }
+
+  .builder-title {
+    margin-top: 12px;
+    padding-top: 10px;
+  }
+
+  .builder-title span {
+    font-size: 8px;
+  }
+
+  .builder-title strong {
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+  .card-footer {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 18px;
+
+    margin-top: 20px;
+    padding-top: 14px;
+  }
+
+  .card-footer > div:nth-child(1),
+  .card-footer > div:nth-child(2) {
+    min-width: 0;
+  }
+
+  .card-footer span {
+    font-size: 8px;
+    letter-spacing: 0.12em;
+  }
+
+  .card-footer strong {
+    font-size: 11px;
+    margin-top: 4px;
+    line-height: 1.25;
+  }
+
+  .qr-code {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .footer-mark {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+    align-self: center;
+  }
+}
