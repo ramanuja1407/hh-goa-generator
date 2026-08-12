@@ -1,10 +1,22 @@
 /* =========================================================
    HACKER HOUSE GOA 2026
    FINAL APP.CSS
+   MOBILE COLOR FIX
    ========================================================= */
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  color-scheme: only light;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
 }
 
 :root {
@@ -30,6 +42,11 @@
 
   --dark: #102a43;
   --dark2: #173f5f;
+
+  --deep-blue: #103f5c;
+  --ocean-blue: #176b87;
+  --goa-orange: #f27c38;
+  --goa-yellow: #ffb347;
 }
 
 
@@ -37,14 +54,9 @@
    BODY
    ========================================================= */
 
-html,
-body,
-#root {
-  min-height: 100%;
-}
-
 body {
   margin: 0;
+
   min-width: 320px;
 
   background:
@@ -61,7 +73,12 @@ body {
       #ffb347 100%
     );
 
-  color: var(--white);
+  background-color: #103f5c;
+
+  color: #ffffff;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 button,
@@ -80,6 +97,7 @@ button {
 
 .app {
   position: relative;
+
   isolation: isolate;
 
   min-height: 100vh;
@@ -96,11 +114,15 @@ button {
     ),
     linear-gradient(
       180deg,
-      rgba(10, 50, 75, 0.96),
-      rgba(18, 95, 115, 0.88) 45%,
-      rgba(239, 105, 55, 0.92) 78%,
-      rgba(255, 180, 70, 0.96)
+      #0a324b 0%,
+      #126077 45%,
+      #ef6937 78%,
+      #ffb446 100%
     );
+
+  background-color: #0a324b;
+
+  color: #ffffff;
 }
 
 
@@ -217,13 +239,14 @@ button {
 
 
 /* =========================================================
-   KEEP CONTENT ABOVE DECORATIONS
+   CONTENT ABOVE DECORATIONS
    ========================================================= */
 
 .header,
 .container,
 .footer {
   position: relative;
+
   z-index: 5;
 }
 
@@ -266,16 +289,18 @@ button {
   height: 42px;
 
   display: grid;
+
   place-items: center;
 
-  border: 2px solid var(--sun);
+  border: 2px solid #ffd166;
 
   background:
     rgba(255, 159, 28, 0.15);
 
-  color: var(--sun);
+  color: #ffd166;
 
   font-size: 13px;
+
   font-weight: 1000;
 
   letter-spacing: -0.05em;
@@ -289,7 +314,7 @@ button {
 .eyebrow {
   margin: 0 0 2px;
 
-  color: var(--sun);
+  color: #ffd166;
 
   font-size: 9px;
 
@@ -301,7 +326,7 @@ button {
 .header h1 {
   margin: 0;
 
-  color: var(--white);
+  color: #ffffff;
 
   font-size: 19px;
 
@@ -318,7 +343,7 @@ button {
 
   gap: 8px;
 
-  color: var(--cream);
+  color: #fff8e7;
 
   font-size: 9px;
 
@@ -333,7 +358,7 @@ button {
 
   border-radius: 50%;
 
-  background: var(--teal);
+  background: #06d6a0;
 
   box-shadow:
     0 0 14px rgba(6, 214, 160, 0.9);
@@ -363,7 +388,7 @@ button {
 
   gap: 12px;
 
-  color: var(--sun);
+  color: #ffd166;
 
   font-size: 10px;
 
@@ -376,13 +401,13 @@ button {
 }
 
 .hero-label span {
-  color: var(--cream);
+  color: #fff8e7;
 }
 
 .hero h2 {
   margin: 18px 0;
 
-  color: var(--white);
+  color: #ffffff;
 
   font-size:
     clamp(58px, 8vw, 105px);
@@ -394,7 +419,7 @@ button {
   font-weight: 1000;
 
   text-shadow:
-    3px 3px 0 var(--dark2),
+    3px 3px 0 #173f5f,
     5px 5px 12px rgba(0, 0, 0, 0.45);
 }
 
@@ -413,7 +438,7 @@ button {
 
   margin-top: 22px;
 
-  color: var(--teal);
+  color: #06d6a0;
 
   font-size: 22px;
 
@@ -425,7 +450,7 @@ button {
 .description {
   max-width: 600px;
 
-  color: var(--white);
+  color: #ffffff;
 
   line-height: 1.65;
 
@@ -486,7 +511,7 @@ button {
 
 .section-heading > span,
 .preview-header > div > span {
-  color: var(--sun);
+  color: #ffd166;
 
   font-size: 10px;
 
@@ -503,7 +528,7 @@ button {
 
 .section-heading strong,
 .preview-header strong {
-  color: var(--white);
+  color: #ffffff;
 
   font-size: 11px;
 
@@ -515,7 +540,7 @@ button {
 
 .section-heading small,
 .preview-header small {
-  color: var(--cream);
+  color: #fff8e7;
 
   font-size: 10px;
 }
@@ -555,7 +580,7 @@ button {
 }
 
 .upload-box:hover {
-  border-color: var(--sun);
+  border-color: #ffd166;
 
   background:
     rgba(8, 40, 58, 0.7);
@@ -579,12 +604,12 @@ button {
 
   place-items: center;
 
-  border: 2px solid var(--sun);
+  border: 2px solid #ffd166;
 
   background:
     rgba(255, 159, 28, 0.15);
 
-  color: var(--sun);
+  color: #ffd166;
 
   font-size: 27px;
 
@@ -594,7 +619,7 @@ button {
 }
 
 .upload-box strong {
-  color: var(--white);
+  color: #ffffff;
 
   font-size: 12px;
 
@@ -607,7 +632,7 @@ button {
 .upload-box small {
   margin-top: 7px;
 
-  color: var(--cream);
+  color: #fff8e7;
 
   font-size: 10px;
 }
@@ -634,7 +659,7 @@ button {
 }
 
 .form label > span {
-  color: var(--white);
+  color: #ffffff;
 
   font-size: 9px;
 
@@ -659,15 +684,18 @@ button {
   outline: none;
 
   background:
-    rgba(8, 40, 58, 0.7);
+    #08283a;
 
-  color: var(--white);
+  color: #ffffff;
 
   transition: 0.2s ease;
+
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .form input:focus {
-  border-color: var(--sun);
+  border-color: #ffd166;
 
   box-shadow:
     0 0 0 2px rgba(255, 209, 102, 0.2);
@@ -675,6 +703,8 @@ button {
 
 .form input::placeholder {
   color: #c7d6d9;
+
+  opacity: 1;
 }
 
 
@@ -692,12 +722,12 @@ button {
   padding: 12px;
 
   border-left:
-    4px solid var(--sun);
+    4px solid #ffd166;
 
   background:
     rgba(255, 209, 102, 0.12);
 
-  color: var(--cream);
+  color: #fff8e7;
 
   font-size: 10px;
 
@@ -706,7 +736,7 @@ button {
 }
 
 .tip span {
-  color: var(--sun);
+  color: #ffd166;
 }
 
 
@@ -736,7 +766,7 @@ button {
 }
 
 .preview-header small {
-  color: var(--cream);
+  color: #fff8e7;
 
   font-size: 9px;
 
@@ -765,8 +795,6 @@ button {
 
 /* =========================================================
    ID CARD
-   IMPORTANT:
-   GRID IS USED HERE TO PREVENT OVERLAPPING
    ========================================================= */
 
 .id-card {
@@ -776,10 +804,6 @@ button {
 
   width: min(100%, 430px);
 
-  /*
-    IMPORTANT:
-    Card is slightly wider/taller balanced.
-  */
   aspect-ratio: 0.72;
 
   padding: 20px;
@@ -794,20 +818,15 @@ button {
   background:
     linear-gradient(
       145deg,
-      rgba(15, 72, 94, 0.96),
-      rgba(10, 45, 65, 0.96) 55%,
-      rgba(221, 92, 43, 0.92)
+      #0f485e 0%,
+      #0a2d41 55%,
+      #dd5c2b 100%
     );
 
   box-shadow:
     0 35px 90px rgba(0, 0, 0, 0.45),
     inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 
-  /*
-    THIS IS THE MAIN FIX.
-    Instead of flex fighting for space,
-    the card has three controlled rows.
-  */
   display: grid;
 
   grid-template-rows:
@@ -901,7 +920,7 @@ button {
 }
 
 .card-top strong {
-  color: var(--sun);
+  color: #ffd166;
 
   font-size: 24px;
 
@@ -914,7 +933,7 @@ button {
 }
 
 .card-top span {
-  color: var(--cream);
+  color: #fff8e7;
 
   font-size: 9px;
 
@@ -930,7 +949,7 @@ button {
 
   gap: 6px;
 
-  color: var(--cream);
+  color: #fff8e7;
 
   font-size: 7px;
 
@@ -949,10 +968,10 @@ button {
 
   border-radius: 50%;
 
-  background: var(--teal);
+  background: #06d6a0;
 
   box-shadow:
-    0 0 0 3px rgba(0, 168, 168, 0.15);
+    0 0 0 3px rgba(6, 214, 160, 0.15);
 }
 
 
@@ -965,10 +984,6 @@ button {
 
   width: 100%;
 
-  /*
-    MAIN PHOTO ALIGNMENT FIX.
-    Don't let aspect-ratio consume too much card height.
-  */
   height: 215px;
 
   margin: 15px 0 14px;
@@ -978,9 +993,9 @@ button {
   background:
     linear-gradient(
       180deg,
-      #168aad,
-      #f27c38,
-      #ffd166
+      #168aad 0%,
+      #f27c38 55%,
+      #ffd166 100%
     );
 
   border:
@@ -1019,7 +1034,7 @@ button {
 
   justify-content: center;
 
-  color: var(--cream);
+  color: #fff8e7;
 
   line-height: 0.8;
 
@@ -1045,7 +1060,7 @@ button {
   width: 18px;
   height: 18px;
 
-  border-color: var(--sun);
+  border-color: #ffd166;
 
   pointer-events: none;
 }
@@ -1072,11 +1087,6 @@ button {
    ========================================================= */
 
 .card-info {
-  /*
-    IMPORTANT:
-    The info area is allowed to shrink,
-    but its content stays contained.
-  */
   min-height: 0;
 
   overflow: hidden;
@@ -1089,7 +1099,7 @@ button {
 }
 
 .builder-label {
-  color: var(--cream);
+  color: #fff8e7;
 
   font-size: 8px;
 
@@ -1106,13 +1116,10 @@ button {
 .card-info h3 {
   margin: 5px 0 9px;
 
-  color: var(--white);
+  color: #ffffff;
 
-  /*
-    Smaller and controlled so long names
-    don't push footer downward.
-  */
-  font-size: clamp(25px, 4.5vw, 37px);
+  font-size:
+    clamp(25px, 4.5vw, 37px);
 
   line-height: 0.92;
 
@@ -1125,7 +1132,7 @@ button {
   max-width: 100%;
 
   text-shadow:
-    3px 3px 0 var(--dark2),
+    3px 3px 0 #173f5f,
     5px 5px 10px rgba(0, 0, 0, 0.6);
 }
 
@@ -1160,7 +1167,7 @@ button {
   background:
     rgba(255, 255, 255, 0.08);
 
-  color: var(--white);
+  color: #ffffff;
 
   font-size: 7px;
 
@@ -1197,14 +1204,11 @@ button {
 
   gap: 3px;
 
-  /*
-    Prevent this section from overlapping footer.
-  */
   flex-shrink: 0;
 }
 
 .builder-title span {
-  color: var(--cream);
+  color: #fff8e7;
 
   font-size: 7px;
 
@@ -1219,7 +1223,7 @@ button {
 }
 
 .builder-title strong {
-  color: var(--sun);
+  color: #ffd166;
 
   font-size: 14px;
 
@@ -1243,12 +1247,6 @@ button {
    ========================================================= */
 
 .card-footer {
-  /*
-    IMPORTANT:
-    Footer is now ALWAYS its own grid row.
-    It can no longer overlap builder title.
-  */
-
   min-width: 0;
 
   display: grid;
@@ -1282,7 +1280,7 @@ button {
 }
 
 .card-footer span {
-  color: var(--cream);
+  color: #fff8e7;
 
   font-size: 6px;
 
@@ -1299,7 +1297,7 @@ button {
 }
 
 .card-footer strong {
-  color: var(--white);
+  color: #ffffff;
 
   font-size: 8px;
 
@@ -1335,7 +1333,7 @@ button {
   background: #ffffff;
 
   border:
-    3px solid var(--dark);
+    3px solid #102a43;
 
   border-radius: 5px;
 
@@ -1357,7 +1355,7 @@ button {
 .footer-mark {
   align-self: end;
 
-  color: var(--sun);
+  color: #ffd166;
 
   font-size: 20px;
 
@@ -1397,14 +1395,17 @@ button {
   letter-spacing: 0.12em;
 
   transition: 0.2s ease;
+
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .download-button {
   border:
-    2px solid var(--dark);
+    2px solid #102a43;
 
   background:
-    var(--sun);
+    #ffd166;
 
   color:
     #173f5f;
@@ -1433,18 +1434,18 @@ button {
     2px solid rgba(255, 255, 255, 0.45);
 
   background:
-    rgba(8, 40, 58, 0.7);
+    #08283a;
 
   color:
-    var(--white);
+    #ffffff;
 
   text-shadow: none;
 }
 
 .share-button:hover {
-  border-color: var(--sun);
+  border-color: #ffd166;
 
-  color: var(--sun);
+  color: #ffd166;
 
   transform:
     translateY(-3px);
@@ -1470,10 +1471,10 @@ button {
   border-radius: 9px;
 
   background:
-    rgba(8, 40, 58, 0.7);
+    #08283a;
 
   color:
-    var(--white);
+    #ffffff;
 
   font-size: 9px;
 
@@ -1485,12 +1486,15 @@ button {
     1px 2px 4px rgba(0, 0, 0, 0.6);
 
   transition: 0.2s ease;
+
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .profile-preview-button:hover {
-  border-color: var(--sun);
+  border-color: #ffd166;
 
-  color: var(--sun);
+  color: #ffd166;
 
   transform:
     translateY(-2px);
@@ -1523,7 +1527,7 @@ button {
 
   justify-content: space-between;
 
-  color: var(--cream);
+  color: #fff8e7;
 
   font-size: 8px;
 
@@ -1541,6 +1545,22 @@ button {
 
   .app {
     padding: 15px;
+
+    background:
+      radial-gradient(
+        circle at 50% 20%,
+        rgba(255, 210, 100, 0.25),
+        transparent 20%
+      ),
+      linear-gradient(
+        180deg,
+        #0a324b 0%,
+        #126077 45%,
+        #ef6937 78%,
+        #ffb446 100%
+      );
+
+    background-color: #0a324b;
   }
 
   .container {
@@ -1578,12 +1598,66 @@ button {
 
 @media (max-width: 480px) {
 
+  html,
+  body,
+  #root {
+    width: 100%;
+
+    min-width: 320px;
+
+    background-color: #0a324b;
+
+    color: #ffffff;
+  }
+
+  body {
+    background:
+      linear-gradient(
+        180deg,
+        #103f5c 0%,
+        #176b87 30%,
+        #f27c38 68%,
+        #ffb347 100%
+      );
+
+    color: #ffffff;
+  }
+
+  .app {
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 15px;
+
+    background:
+      radial-gradient(
+        circle at 50% 18%,
+        rgba(255, 209, 102, 0.28),
+        transparent 18%
+      ),
+      linear-gradient(
+        180deg,
+        #103f5c 0%,
+        #176b87 32%,
+        #f27c38 72%,
+        #ffb347 100%
+      );
+
+    background-color: #103f5c;
+
+    color: #ffffff;
+  }
+
   .header-right {
     display: none;
   }
 
   .header {
     padding-top: 8px;
+
+    background:
+      rgba(8, 40, 58, 0.25);
   }
 
   .container {
@@ -1592,20 +1666,23 @@ button {
 
   .hero h2 {
     font-size: 54px;
+
+    color: #ffffff;
+  }
+
+  .hero h2 span {
+    color: #ffe066;
   }
 
   .description {
     font-size: 14px;
+
+    color: #ffffff;
   }
 
   .action-buttons {
     grid-template-columns: 1fr;
   }
-
-  /*
-    Mobile card:
-    slightly smaller padding and photo.
-  */
 
   .id-card {
     width: 100%;
@@ -1614,8 +1691,18 @@ button {
 
     aspect-ratio: 0.70;
 
+    background:
+      linear-gradient(
+        145deg,
+        #0f485e 0%,
+        #0a2d41 55%,
+        #dd5c2b 100%
+      );
+
     box-shadow:
       0 25px 55px rgba(0, 0, 0, 0.45);
+
+    color: #ffffff;
   }
 
   .photo-frame {
@@ -1623,10 +1710,20 @@ button {
 
     margin:
       13px 0 12px;
+
+    background:
+      linear-gradient(
+        180deg,
+        #168aad 0%,
+        #f27c38 55%,
+        #ffd166 100%
+      );
   }
 
   .card-info h3 {
     font-size: 30px;
+
+    color: #ffffff;
   }
 
   .builder-title {
@@ -1637,6 +1734,8 @@ button {
 
   .builder-title strong {
     font-size: 12px;
+
+    color: #ffd166;
   }
 
   .card-footer {
@@ -1656,10 +1755,14 @@ button {
   .qr-code {
     width: 46px;
     height: 46px;
+
+    background: #ffffff;
   }
 
   .footer-mark {
     font-size: 15px;
+
+    color: #ffd166;
   }
 
   .photo-placeholder strong {
@@ -1668,6 +1771,19 @@ button {
 
   .goa-palm {
     font-size: 55px;
+  }
+
+  .download-button {
+    background: #ffd166;
+
+    color: #173f5f;
+  }
+
+  .share-button,
+  .profile-preview-button {
+    background: #08283a;
+
+    color: #ffffff;
   }
 }
 
@@ -1680,14 +1796,41 @@ button {
 
   .app {
     padding: 10px;
+
+    background:
+      linear-gradient(
+        180deg,
+        #103f5c 0%,
+        #176b87 32%,
+        #f27c38 72%,
+        #ffb347 100%
+      );
+
+    background-color: #103f5c;
   }
 
   .id-card {
     padding: 14px;
+
+    background:
+      linear-gradient(
+        145deg,
+        #0f485e 0%,
+        #0a2d41 55%,
+        #dd5c2b 100%
+      );
   }
 
   .photo-frame {
     height: 150px;
+
+    background:
+      linear-gradient(
+        180deg,
+        #168aad 0%,
+        #f27c38 55%,
+        #ffd166 100%
+      );
   }
 
   .card-info h3 {
@@ -1716,5 +1859,85 @@ button {
   .qr-code {
     width: 42px;
     height: 42px;
+  }
+}
+
+
+/* =========================================================
+   PREVENT MOBILE BROWSER COLOR TRANSFORMATION
+   ========================================================= */
+
+@media (prefers-color-scheme: dark) {
+
+  html {
+    color-scheme: only light;
+  }
+
+  body {
+    background:
+      linear-gradient(
+        180deg,
+        #103f5c 0%,
+        #176b87 30%,
+        #f27c38 68%,
+        #ffb347 100%
+      );
+
+    color: #ffffff;
+  }
+
+  .app {
+    background:
+      radial-gradient(
+        circle at 50% 25%,
+        rgba(255, 210, 100, 0.25),
+        transparent 18%
+      ),
+      linear-gradient(
+        180deg,
+        #103f5c 0%,
+        #176b87 32%,
+        #f27c38 72%,
+        #ffb347 100%
+      );
+
+    background-color: #103f5c;
+
+    color: #ffffff;
+  }
+
+  .id-card {
+    background:
+      linear-gradient(
+        145deg,
+        #0f485e 0%,
+        #0a2d41 55%,
+        #dd5c2b 100%
+      );
+
+    color: #ffffff;
+  }
+
+  .photo-frame {
+    background:
+      linear-gradient(
+        180deg,
+        #168aad 0%,
+        #f27c38 55%,
+        #ffd166 100%
+      );
+  }
+
+  .download-button {
+    background: #ffd166;
+
+    color: #173f5f;
+  }
+
+  .share-button,
+  .profile-preview-button {
+    background: #08283a;
+
+    color: #ffffff;
   }
 }
