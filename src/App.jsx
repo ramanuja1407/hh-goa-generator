@@ -153,11 +153,6 @@ function App() {
 
   /* --------------------------------------------------
      BUILDER PROFILE PAGE
-     
-     When someone opens:
-     /builder/HH26-XXXX
-
-     we fetch the profile from Supabase.
   -------------------------------------------------- */
 
   if (isBuilderProfile) {
@@ -188,13 +183,6 @@ function App() {
       alert("Please choose an image file.");
       return;
     }
-
-    /*
-     * Convert photo to Base64.
-     *
-     * This lets us store the image together
-     * with the builder profile in Supabase.
-     */
 
     const reader = new FileReader();
 
@@ -337,11 +325,6 @@ ${builderId}
         photoUrl: photo || null,
       });
 
-      /*
-       * Profile has now been saved publicly.
-       * Open the profile URL.
-       */
-
       window.location.href =
         `/builder/${builderId}`;
 
@@ -367,6 +350,28 @@ ${builderId}
 
   return (
     <div className="app">
+
+      {/* =================================================
+          GOA PALM TREES
+
+          These are inside the page so they scroll
+          naturally with the website.
+         ================================================= */}
+
+      <div
+        className="goa-palm goa-palm-left"
+        aria-hidden="true"
+      >
+        🌴
+      </div>
+
+      <div
+        className="goa-palm goa-palm-right"
+        aria-hidden="true"
+      >
+        🌴
+      </div>
+
 
       {/* HEADER */}
 

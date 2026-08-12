@@ -1,71 +1,169 @@
+/* =====================================================
+   GOA BEACH PROFILE
+   SUNSET + PALM TREES + READABLE TEXT
+===================================================== */
+
 * {
   box-sizing: border-box;
 }
 
-/* =========================
-   GOA BEACH PROFILE PAGE
-========================= */
+/* =====================================================
+   MAIN PAGE
+===================================================== */
 
 .profile-page {
   position: relative;
-
   min-height: 100vh;
-
   overflow: hidden;
-
-  color: #17202a;
 
   padding: 24px;
 
+  color: #ffffff;
+
   background:
     radial-gradient(
-      circle at 85% 10%,
-      rgba(255, 90, 54, 0.35),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 10% 85%,
-      rgba(0, 188, 212, 0.25),
-      transparent 30%
+      circle at 50% 15%,
+      rgba(255, 209, 102, 0.25),
+      transparent 18%
     ),
     linear-gradient(
-      135deg,
-      #fff8dc,
-      #fffdf2 45%,
-      #d9f8f5
+      180deg,
+      #075985 0%,
+      #087ea4 32%,
+      #e76f3c 72%,
+      #ffb347 100%
     );
 }
 
-/* =========================
-   BEACH GRID
-========================= */
+/* =====================================================
+   SUNSET
+===================================================== */
+
+.profile-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  top: 90px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #fff4ad 0%,
+      #ffd166 35%,
+      #ff9f1c 65%,
+      rgba(255, 159, 28, 0) 72%
+    );
+
+  filter: blur(2px);
+
+  opacity: 0.95;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+/* =====================================================
+   BEACH GRID / ATMOSPHERE
+===================================================== */
 
 .profile-grid {
   position: absolute;
 
   inset: 0;
 
-  opacity: 0.18;
+  opacity: 0.08;
 
   pointer-events: none;
 
   background-image:
     linear-gradient(
-      rgba(23, 32, 42, 0.2) 1px,
+      rgba(255, 255, 255, 0.8) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(23, 32, 42, 0.2) 1px,
+      rgba(255, 255, 255, 0.8) 1px,
       transparent 1px
     );
 
   background-size: 45px 45px;
+
+  z-index: 0;
 }
 
-/* =========================
+/* =====================================================
+   PALM TREE 1
+   Moves naturally with page while scrolling
+===================================================== */
+
+.profile-grid::before {
+  content: "🌴";
+
+  position: absolute;
+
+  left: -35px;
+  top: 210px;
+
+  font-size: clamp(90px, 12vw, 170px);
+
+  opacity: 0.65;
+
+  transform: rotate(-8deg);
+
+  filter:
+    drop-shadow(
+      6px 10px 7px rgba(0, 0, 0, 0.3)
+    );
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+/* =====================================================
+   PALM TREE 2
+   Opposite side + different height
+===================================================== */
+
+.profile-grid::after {
+  content: "🌴";
+
+  position: absolute;
+
+  right: -40px;
+  top: 470px;
+
+  font-size: clamp(80px, 11vw, 155px);
+
+  opacity: 0.58;
+
+  transform:
+    scaleX(-1)
+    rotate(-5deg);
+
+  filter:
+    drop-shadow(
+      6px 10px 7px rgba(0, 0, 0, 0.3)
+    );
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+/* =====================================================
    BACK BUTTON
-========================= */
+===================================================== */
 
 .profile-back-button {
   position: fixed;
@@ -77,40 +175,37 @@
 
   padding: 11px 15px;
 
-  border: 2px solid #17202a;
+  border: 1px solid rgba(255, 255, 255, 0.45);
 
-  border-radius: 20px;
+  background:
+    rgba(8, 55, 75, 0.85);
 
-  background: #ffd54f;
-
-  color: #17202a;
+  color: #ffd166;
 
   font-size: 9px;
-
-  font-weight: 1000;
+  font-weight: 900;
 
   letter-spacing: 0.12em;
 
   cursor: pointer;
 
-  transition: 0.2s ease;
+  backdrop-filter: blur(8px);
 
-  box-shadow:
-    4px 4px 0 #ff5a36;
+  transition: 0.2s ease;
 }
 
 .profile-back-button:hover {
-  background: #ffea86;
+  border-color: #ffd166;
 
-  transform: translate(-2px, -2px);
+  background:
+    rgba(8, 55, 75, 0.98);
 
-  box-shadow:
-    6px 6px 0 #00a8a8;
+  transform: translateY(-2px);
 }
 
-/* =========================
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 .profile-header {
   position: relative;
@@ -121,61 +216,71 @@
 
   padding-bottom: 20px;
 
-  border-bottom: 2px solid rgba(23, 32, 42, 0.15);
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.3);
 
   display: flex;
 
   align-items: center;
 
   gap: 14px;
+
+  background:
+    rgba(5, 55, 75, 0.2);
+
+  backdrop-filter: blur(6px);
+
+  z-index: 5;
 }
 
 .profile-logo {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
 
   display: grid;
 
   place-items: center;
 
-  border: 2px solid #17202a;
+  border:
+    2px solid #ffd166;
 
-  border-radius: 50%;
+  color: #ffd166;
 
-  background: #ff5a36;
-
-  color: #ffffff;
-
-  font-size: 13px;
-
-  font-weight: 1000;
-
-  transform: rotate(-5deg);
+  background:
+    rgba(255, 159, 28, 0.2);
 
   box-shadow:
-    5px 5px 0 #00a8a8;
+    4px 4px 0 rgba(231, 111, 60, 0.8);
+
+  font-size: 13px;
+  font-weight: 900;
 }
 
 .profile-header p {
   margin: 0 0 3px;
 
-  color: #ff5a36;
+  color: #ffe082;
 
   font-size: 9px;
-
-  font-weight: 1000;
+  font-weight: 900;
 
   letter-spacing: 0.2em;
+
+  text-shadow:
+    1px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 .profile-header h1 {
   margin: 0;
 
-  color: #17202a;
+  color: #ffffff;
 
   font-size: 19px;
 
   letter-spacing: -0.04em;
+
+  text-shadow:
+    2px 2px 0 rgba(0, 0, 0, 0.35);
 }
 
 .profile-status {
@@ -187,31 +292,32 @@
 
   gap: 7px;
 
-  color: #52616b;
+  color: #fff8e7;
 
   font-size: 8px;
-
-  font-weight: 1000;
+  font-weight: 900;
 
   letter-spacing: 0.12em;
+
+  text-shadow:
+    1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .profile-status span {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 
   border-radius: 50%;
 
-  background: #00a8a8;
+  background: #06d6a0;
 
   box-shadow:
-    0 0 0 4px rgba(0, 168, 168, 0.12),
-    0 0 14px rgba(0, 168, 168, 0.65);
+    0 0 14px rgba(6, 214, 160, 0.9);
 }
 
-/* =========================
-   MAIN
-========================= */
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
 
 .profile-container {
   position: relative;
@@ -221,23 +327,27 @@
   margin: 0 auto;
 
   padding: 90px 0 40px;
+
+  z-index: 5;
 }
 
 .profile-label {
   margin-bottom: 16px;
 
-  color: #ff5a36;
+  color: #ffe082;
 
   font-size: 10px;
-
-  font-weight: 1000;
+  font-weight: 900;
 
   letter-spacing: 0.2em;
+
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.55);
 }
 
-/* =========================
+/* =====================================================
    PROFILE CARD
-========================= */
+===================================================== */
 
 .profile-card {
   position: relative;
@@ -249,41 +359,43 @@
 
   min-height: 480px;
 
-  border: 3px solid #17202a;
-
-  border-radius: 18px;
-
   overflow: hidden;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.4);
 
   background:
     linear-gradient(
-      135deg,
-      #fff7d6,
-      #ffffff 55%,
-      #d9f8f5
+      145deg,
+      rgba(12, 79, 101, 0.96),
+      rgba(7, 54, 75, 0.97) 55%,
+      rgba(213, 88, 48, 0.94)
     );
 
   box-shadow:
-    14px 14px 0 #ff5a36,
-    22px 22px 0 #00a8a8;
+    0 40px 100px rgba(0, 0, 0, 0.4);
+
+  backdrop-filter: blur(8px);
 }
 
-/* =========================
+/* =====================================================
    PHOTO
-========================= */
+===================================================== */
 
 .profile-photo {
   min-height: 480px;
 
   overflow: hidden;
 
-  border-right: 3px solid #17202a;
+  border-right:
+    1px solid rgba(255, 255, 255, 0.35);
 
   background:
     linear-gradient(
-      135deg,
-      #8ee7e4,
-      #ffe27a
+      180deg,
+      #168aad,
+      #e76f3c,
+      #ffd166
     );
 }
 
@@ -294,10 +406,6 @@
   display: block;
 
   object-fit: cover;
-
-  filter:
-    saturate(1.15)
-    contrast(1.02);
 }
 
 .profile-photo-placeholder {
@@ -308,18 +416,20 @@
 
   place-items: center;
 
-  color: #00a8a8;
+  color: #fff8e7;
 
   font-size: 100px;
-
-  font-weight: 1000;
+  font-weight: 900;
 
   letter-spacing: -0.1em;
+
+  text-shadow:
+    4px 5px 0 rgba(0, 0, 0, 0.35);
 }
 
-/* =========================
+/* =====================================================
    CONTENT
-========================= */
+===================================================== */
 
 .profile-content {
   padding: 55px 55px 40px;
@@ -329,27 +439,29 @@
   flex-direction: column;
 
   background:
-    radial-gradient(
-      circle at 100% 0%,
-      rgba(255, 213, 79, 0.35),
-      transparent 30%
+    linear-gradient(
+      145deg,
+      rgba(8, 65, 86, 0.3),
+      rgba(231, 111, 60, 0.2)
     );
 }
 
 .profile-small-label {
-  color: #52616b;
+  color: #fff8e7;
 
   font-size: 9px;
-
-  font-weight: 1000;
+  font-weight: 900;
 
   letter-spacing: 0.2em;
+
+  text-shadow:
+    1px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 .profile-content h2 {
   margin: 8px 0;
 
-  color: #17202a;
+  color: #ffffff;
 
   font-size: clamp(42px, 7vw, 78px);
 
@@ -360,41 +472,46 @@
   word-break: break-word;
 
   text-shadow:
-    4px 4px 0 rgba(255, 213, 79, 0.65);
+    4px 5px 0 rgba(5, 45, 65, 0.55);
 }
 
 .profile-title {
   margin-top: 15px;
 
-  color: #ff5a36;
+  color: #ffd166;
 
   font-size: 18px;
-
-  font-weight: 1000;
+  font-weight: 900;
 
   letter-spacing: -0.02em;
+
+  text-shadow:
+    2px 2px 3px rgba(0, 0, 0, 0.45);
 }
 
-/* =========================
+/* =====================================================
    STACK
-========================= */
+===================================================== */
 
 .profile-section {
   margin-top: 45px;
 
   padding-top: 16px;
 
-  border-top: 2px solid rgba(23, 32, 42, 0.15);
+  border-top:
+    1px solid rgba(255, 255, 255, 0.3);
 }
 
 .profile-section > span {
-  color: #52616b;
+  color: #fff8e7;
 
   font-size: 8px;
-
-  font-weight: 1000;
+  font-weight: 900;
 
   letter-spacing: 0.16em;
+
+  text-shadow:
+    1px 1px 3px rgba(0, 0, 0, 0.45);
 }
 
 .profile-tags {
@@ -408,38 +525,30 @@
 }
 
 .profile-tags span {
-  padding: 7px 10px;
+  padding: 7px 9px;
 
-  border: 2px solid #00a8a8;
+  border:
+    1px solid rgba(255, 255, 255, 0.45);
 
-  border-radius: 20px;
+  background:
+    rgba(255, 255, 255, 0.1);
 
-  background: rgba(0, 168, 168, 0.08);
-
-  color: #17202a;
+  color: #ffffff;
 
   font-size: 8px;
-
-  font-weight: 1000;
+  font-weight: 900;
 
   letter-spacing: 0.08em;
 
   text-transform: uppercase;
 
-  transition: 0.2s ease;
+  text-shadow:
+    1px 1px 2px rgba(0, 0, 0, 0.4);
 }
 
-.profile-tags span:hover {
-  background: #ffd54f;
-
-  border-color: #ff5a36;
-
-  transform: translateY(-2px);
-}
-
-/* =========================
+/* =====================================================
    DETAILS
-========================= */
+===================================================== */
 
 .profile-details {
   margin-top: auto;
@@ -453,7 +562,8 @@
 
   gap: 18px;
 
-  border-top: 2px solid rgba(23, 32, 42, 0.15);
+  border-top:
+    1px solid rgba(255, 255, 255, 0.3);
 }
 
 .profile-details div {
@@ -465,28 +575,33 @@
 }
 
 .profile-details span {
-  color: #718096;
+  color: #fff8e7;
 
   font-size: 7px;
-
-  font-weight: 1000;
+  font-weight: 900;
 
   letter-spacing: 0.15em;
+
+  text-shadow:
+    1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .profile-details strong {
-  color: #17202a;
+  color: #ffffff;
 
   font-size: 9px;
 
   letter-spacing: 0.05em;
 
   word-break: break-word;
+
+  text-shadow:
+    1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* =========================
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 .profile-footer {
   padding-top: 20px;
@@ -495,20 +610,23 @@
 
   justify-content: space-between;
 
-  color: #718096;
+  color: #fff8e7;
 
   font-size: 8px;
-
-  font-weight: 1000;
+  font-weight: 900;
 
   letter-spacing: 0.15em;
+
+  text-shadow:
+    1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* =========================
+/* =====================================================
    TABLET
-========================= */
+===================================================== */
 
 @media (max-width: 750px) {
+
   .profile-page {
     padding: 15px;
   }
@@ -519,10 +637,6 @@
 
   .profile-card {
     grid-template-columns: 1fr;
-
-    box-shadow:
-      10px 10px 0 #ff5a36,
-      17px 17px 0 #00a8a8;
   }
 
   .profile-photo {
@@ -532,7 +646,8 @@
 
     border-right: 0;
 
-    border-bottom: 3px solid #17202a;
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.35);
   }
 
   .profile-content {
@@ -542,16 +657,32 @@
   .profile-details {
     margin-top: 35px;
   }
+
+  /* Smaller palms on tablets */
+
+  .profile-grid::before {
+    left: -55px;
+    top: 180px;
+
+    font-size: 100px;
+  }
+
+  .profile-grid::after {
+    right: -55px;
+    top: 500px;
+
+    font-size: 90px;
+  }
 }
 
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media (max-width: 600px) {
+
   .profile-back-button {
     top: 12px;
-
     left: 12px;
 
     padding: 9px 11px;
@@ -566,19 +697,49 @@
   .profile-header {
     padding-top: 45px;
   }
+
+  .profile-page::before {
+    width: 180px;
+    height: 180px;
+
+    top: 110px;
+  }
+
+  .profile-grid::before {
+    left: -55px;
+    top: 170px;
+
+    font-size: 90px;
+
+    opacity: 0.5;
+  }
+
+  .profile-grid::after {
+    right: -55px;
+    top: 520px;
+
+    font-size: 80px;
+
+    opacity: 0.45;
+  }
 }
 
-/* =========================
+/* =====================================================
    SMALL MOBILE
-========================= */
+===================================================== */
 
 @media (max-width: 480px) {
+
   .profile-page {
     padding: 12px;
   }
 
   .profile-header h1 {
     font-size: 17px;
+  }
+
+  .profile-container {
+    padding-top: 50px;
   }
 
   .profile-content {
@@ -605,101 +766,17 @@
     gap: 15px;
   }
 
-  .profile-card {
-    box-shadow:
-      7px 7px 0 #ff5a36,
-      12px 12px 0 #00a8a8;
-  }
-}
-/* =========================
-   🌴 GOA PROFILE VIBES
-========================= */
+  .profile-grid::before {
+    left: -65px;
+    top: 180px;
 
-.profile-page {
-  position: relative;
-}
-
-/* Palm trees */
-.profile-page::before {
-  content: "🌴";
-  position: fixed;
-  left: -25px;
-  bottom: 10px;
-  font-size: 140px;
-  opacity: 0.13;
-  transform: rotate(-8deg);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.profile-page::after {
-  content: "🌴";
-  position: fixed;
-  right: -20px;
-  top: 100px;
-  font-size: 120px;
-  opacity: 0.12;
-  transform: scaleX(-1);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Tropical sunset */
-.profile-page {
-  background:
-    radial-gradient(
-      circle at 80% 5%,
-      rgba(255, 175, 70, 0.22),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 10% 90%,
-      rgba(0, 210, 180, 0.10),
-      transparent 30%
-    ),
-    #080b0b;
-}
-
-/* Keep content above palms */
-.profile-header,
-.profile-container,
-.profile-footer {
-  position: relative;
-  z-index: 2;
-}
-
-/* Goa sunset orange */
-.profile-header p,
-.profile-label,
-.profile-title {
-  color: #ff9d2e;
-}
-
-/* Tropical turquoise status */
-.profile-status span {
-  background: #00d6b4;
-  box-shadow: 0 0 12px rgba(0, 214, 180, 0.8);
-}
-
-/* Funky tags */
-.profile-tags span {
-  border-color: #31504b;
-}
-
-.profile-tags span:hover {
-  border-color: #00d6b4;
-  color: #00d6b4;
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  .profile-page::before {
-    font-size: 85px;
-    left: -20px;
+    font-size: 80px;
   }
 
-  .profile-page::after {
-    font-size: 75px;
-    right: -20px;
+  .profile-grid::after {
+    right: -65px;
+    top: 560px;
+
+    font-size: 70px;
   }
 }
