@@ -2,109 +2,176 @@
   box-sizing: border-box;
 }
 
+/* =========================
+   GOA BEACH PROFILE PAGE
+========================= */
+
 .profile-page {
   position: relative;
+
   min-height: 100vh;
+
   overflow: hidden;
+
+  color: #17202a;
+
+  padding: 24px;
+
   background:
     radial-gradient(
-      circle at 80% 10%,
-      rgba(255, 106, 0, 0.18),
+      circle at 85% 10%,
+      rgba(255, 90, 54, 0.35),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 10% 85%,
+      rgba(0, 188, 212, 0.25),
       transparent 30%
     ),
-    #080808;
-  color: #f5f5f5;
-  padding: 24px;
+    linear-gradient(
+      135deg,
+      #fff8dc,
+      #fffdf2 45%,
+      #d9f8f5
+    );
 }
+
+/* =========================
+   BEACH GRID
+========================= */
 
 .profile-grid {
   position: absolute;
+
   inset: 0;
-  opacity: 0.08;
+
+  opacity: 0.18;
+
   pointer-events: none;
 
   background-image:
-    linear-gradient(#fff 1px, transparent 1px),
-    linear-gradient(90deg, #fff 1px, transparent 1px);
+    linear-gradient(
+      rgba(23, 32, 42, 0.2) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(23, 32, 42, 0.2) 1px,
+      transparent 1px
+    );
 
   background-size: 45px 45px;
 }
 
-/* BACK BUTTON */
+/* =========================
+   BACK BUTTON
+========================= */
 
 .profile-back-button {
   position: fixed;
+
   top: 20px;
   left: 20px;
+
   z-index: 1000;
 
   padding: 11px 15px;
 
-  border: 1px solid #333;
-  background: rgba(10, 10, 10, 0.92);
+  border: 2px solid #17202a;
 
-  color: #ff6a00;
+  border-radius: 20px;
+
+  background: #ffd54f;
+
+  color: #17202a;
 
   font-size: 9px;
-  font-weight: 900;
+
+  font-weight: 1000;
 
   letter-spacing: 0.12em;
 
   cursor: pointer;
 
   transition: 0.2s ease;
+
+  box-shadow:
+    4px 4px 0 #ff5a36;
 }
 
 .profile-back-button:hover {
-  border-color: #ff6a00;
-  background: #151515;
+  background: #ffea86;
+
+  transform: translate(-2px, -2px);
+
+  box-shadow:
+    6px 6px 0 #00a8a8;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .profile-header {
   position: relative;
 
   max-width: 1100px;
+
   margin: 0 auto;
 
   padding-bottom: 20px;
 
-  border-bottom: 1px solid #292929;
+  border-bottom: 2px solid rgba(23, 32, 42, 0.15);
 
   display: flex;
+
   align-items: center;
+
   gap: 14px;
 }
 
 .profile-logo {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
 
   display: grid;
+
   place-items: center;
 
-  border: 1px solid #ff6a00;
+  border: 2px solid #17202a;
 
-  color: #ff6a00;
+  border-radius: 50%;
+
+  background: #ff5a36;
+
+  color: #ffffff;
 
   font-size: 13px;
-  font-weight: 900;
+
+  font-weight: 1000;
+
+  transform: rotate(-5deg);
+
+  box-shadow:
+    5px 5px 0 #00a8a8;
 }
 
 .profile-header p {
   margin: 0 0 3px;
 
-  color: #ff6a00;
+  color: #ff5a36;
 
   font-size: 9px;
-  font-weight: 900;
+
+  font-weight: 1000;
 
   letter-spacing: 0.2em;
 }
 
 .profile-header h1 {
   margin: 0;
+
+  color: #17202a;
 
   font-size: 19px;
 
@@ -115,30 +182,36 @@
   margin-left: auto;
 
   display: flex;
+
   align-items: center;
+
   gap: 7px;
 
-  color: #777;
+  color: #52616b;
 
   font-size: 8px;
-  font-weight: 900;
+
+  font-weight: 1000;
 
   letter-spacing: 0.12em;
 }
 
 .profile-status span {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 
   border-radius: 50%;
 
-  background: #ff6a00;
+  background: #00a8a8;
 
   box-shadow:
-    0 0 12px rgba(255, 106, 0, 0.8);
+    0 0 0 4px rgba(0, 168, 168, 0.12),
+    0 0 14px rgba(0, 168, 168, 0.65);
 }
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 .profile-container {
   position: relative;
@@ -153,15 +226,18 @@
 .profile-label {
   margin-bottom: 16px;
 
-  color: #ff6a00;
+  color: #ff5a36;
 
   font-size: 10px;
-  font-weight: 900;
+
+  font-weight: 1000;
 
   letter-spacing: 0.2em;
 }
 
-/* PROFILE CARD */
+/* =========================
+   PROFILE CARD
+========================= */
 
 .profile-card {
   position: relative;
@@ -173,30 +249,42 @@
 
   min-height: 480px;
 
-  border: 1px solid #333;
+  border: 3px solid #17202a;
+
+  border-radius: 18px;
+
+  overflow: hidden;
 
   background:
     linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.04),
-      rgba(255, 255, 255, 0.01)
-    ),
-    #101010;
+      135deg,
+      #fff7d6,
+      #ffffff 55%,
+      #d9f8f5
+    );
 
   box-shadow:
-    0 40px 100px rgba(0, 0, 0, 0.55);
+    14px 14px 0 #ff5a36,
+    22px 22px 0 #00a8a8;
 }
 
-/* PHOTO */
+/* =========================
+   PHOTO
+========================= */
 
 .profile-photo {
   min-height: 480px;
 
   overflow: hidden;
 
-  border-right: 1px solid #333;
+  border-right: 3px solid #17202a;
 
-  background: #151515;
+  background:
+    linear-gradient(
+      135deg,
+      #8ee7e4,
+      #ffe27a
+    );
 }
 
 .profile-photo img {
@@ -206,6 +294,10 @@
   display: block;
 
   object-fit: cover;
+
+  filter:
+    saturate(1.15)
+    contrast(1.02);
 }
 
 .profile-photo-placeholder {
@@ -213,36 +305,51 @@
   height: 100%;
 
   display: grid;
+
   place-items: center;
 
-  color: #333;
+  color: #00a8a8;
 
   font-size: 100px;
-  font-weight: 900;
+
+  font-weight: 1000;
 
   letter-spacing: -0.1em;
 }
 
-/* CONTENT */
+/* =========================
+   CONTENT
+========================= */
 
 .profile-content {
   padding: 55px 55px 40px;
 
   display: flex;
+
   flex-direction: column;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(255, 213, 79, 0.35),
+      transparent 30%
+    );
 }
 
 .profile-small-label {
-  color: #666;
+  color: #52616b;
 
   font-size: 9px;
-  font-weight: 900;
+
+  font-weight: 1000;
 
   letter-spacing: 0.2em;
 }
 
 .profile-content h2 {
   margin: 8px 0;
+
+  color: #17202a;
 
   font-size: clamp(42px, 7vw, 78px);
 
@@ -251,40 +358,48 @@
   letter-spacing: -0.07em;
 
   word-break: break-word;
+
+  text-shadow:
+    4px 4px 0 rgba(255, 213, 79, 0.65);
 }
 
 .profile-title {
   margin-top: 15px;
 
-  color: #ff6a00;
+  color: #ff5a36;
 
   font-size: 18px;
-  font-weight: 900;
+
+  font-weight: 1000;
 
   letter-spacing: -0.02em;
 }
 
-/* STACK */
+/* =========================
+   STACK
+========================= */
 
 .profile-section {
   margin-top: 45px;
 
   padding-top: 16px;
 
-  border-top: 1px solid #2b2b2b;
+  border-top: 2px solid rgba(23, 32, 42, 0.15);
 }
 
 .profile-section > span {
-  color: #666;
+  color: #52616b;
 
   font-size: 8px;
-  font-weight: 900;
+
+  font-weight: 1000;
 
   letter-spacing: 0.16em;
 }
 
 .profile-tags {
   display: flex;
+
   flex-wrap: wrap;
 
   gap: 7px;
@@ -293,21 +408,38 @@
 }
 
 .profile-tags span {
-  padding: 7px 9px;
+  padding: 7px 10px;
 
-  border: 1px solid #393939;
+  border: 2px solid #00a8a8;
 
-  color: #aaa;
+  border-radius: 20px;
+
+  background: rgba(0, 168, 168, 0.08);
+
+  color: #17202a;
 
   font-size: 8px;
-  font-weight: 900;
+
+  font-weight: 1000;
 
   letter-spacing: 0.08em;
 
   text-transform: uppercase;
+
+  transition: 0.2s ease;
 }
 
-/* DETAILS */
+.profile-tags span:hover {
+  background: #ffd54f;
+
+  border-color: #ff5a36;
+
+  transform: translateY(-2px);
+}
+
+/* =========================
+   DETAILS
+========================= */
 
 .profile-details {
   margin-top: auto;
@@ -321,27 +453,29 @@
 
   gap: 18px;
 
-  border-top: 1px solid #2b2b2b;
+  border-top: 2px solid rgba(23, 32, 42, 0.15);
 }
 
 .profile-details div {
   display: flex;
+
   flex-direction: column;
 
   gap: 5px;
 }
 
 .profile-details span {
-  color: #555;
+  color: #718096;
 
   font-size: 7px;
-  font-weight: 900;
+
+  font-weight: 1000;
 
   letter-spacing: 0.15em;
 }
 
 .profile-details strong {
-  color: #aaa;
+  color: #17202a;
 
   font-size: 9px;
 
@@ -350,26 +484,31 @@
   word-break: break-word;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 .profile-footer {
   padding-top: 20px;
 
   display: flex;
+
   justify-content: space-between;
 
-  color: #444;
+  color: #718096;
 
   font-size: 8px;
-  font-weight: 900;
+
+  font-weight: 1000;
 
   letter-spacing: 0.15em;
 }
 
-/* TABLET */
+/* =========================
+   TABLET
+========================= */
 
 @media (max-width: 750px) {
-
   .profile-page {
     padding: 15px;
   }
@@ -380,6 +519,10 @@
 
   .profile-card {
     grid-template-columns: 1fr;
+
+    box-shadow:
+      10px 10px 0 #ff5a36,
+      17px 17px 0 #00a8a8;
   }
 
   .profile-photo {
@@ -389,7 +532,7 @@
 
     border-right: 0;
 
-    border-bottom: 1px solid #333;
+    border-bottom: 3px solid #17202a;
   }
 
   .profile-content {
@@ -401,12 +544,14 @@
   }
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 600px) {
-
   .profile-back-button {
     top: 12px;
+
     left: 12px;
 
     padding: 9px 11px;
@@ -423,10 +568,11 @@
   }
 }
 
-/* SMALL MOBILE */
+/* =========================
+   SMALL MOBILE
+========================= */
 
 @media (max-width: 480px) {
-
   .profile-page {
     padding: 12px;
   }
@@ -457,5 +603,103 @@
     font-size: 7px;
 
     gap: 15px;
+  }
+
+  .profile-card {
+    box-shadow:
+      7px 7px 0 #ff5a36,
+      12px 12px 0 #00a8a8;
+  }
+}
+/* =========================
+   🌴 GOA PROFILE VIBES
+========================= */
+
+.profile-page {
+  position: relative;
+}
+
+/* Palm trees */
+.profile-page::before {
+  content: "🌴";
+  position: fixed;
+  left: -25px;
+  bottom: 10px;
+  font-size: 140px;
+  opacity: 0.13;
+  transform: rotate(-8deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.profile-page::after {
+  content: "🌴";
+  position: fixed;
+  right: -20px;
+  top: 100px;
+  font-size: 120px;
+  opacity: 0.12;
+  transform: scaleX(-1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Tropical sunset */
+.profile-page {
+  background:
+    radial-gradient(
+      circle at 80% 5%,
+      rgba(255, 175, 70, 0.22),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(0, 210, 180, 0.10),
+      transparent 30%
+    ),
+    #080b0b;
+}
+
+/* Keep content above palms */
+.profile-header,
+.profile-container,
+.profile-footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* Goa sunset orange */
+.profile-header p,
+.profile-label,
+.profile-title {
+  color: #ff9d2e;
+}
+
+/* Tropical turquoise status */
+.profile-status span {
+  background: #00d6b4;
+  box-shadow: 0 0 12px rgba(0, 214, 180, 0.8);
+}
+
+/* Funky tags */
+.profile-tags span {
+  border-color: #31504b;
+}
+
+.profile-tags span:hover {
+  border-color: #00d6b4;
+  color: #00d6b4;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .profile-page::before {
+    font-size: 85px;
+    left: -20px;
+  }
+
+  .profile-page::after {
+    font-size: 75px;
+    right: -20px;
   }
 }
