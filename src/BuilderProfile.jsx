@@ -4,7 +4,10 @@ function BuilderProfile({ builderId, name, stack, photo }) {
   const getBuilderTitle = (stack) => {
     const value = (stack || "").toLowerCase();
 
-    if (value.includes("ai") || value.includes("machine learning")) {
+    if (
+      value.includes("ai") ||
+      value.includes("machine learning")
+    ) {
       return "AI ALCHEMIST";
     }
 
@@ -44,7 +47,10 @@ function BuilderProfile({ builderId, name, stack, photo }) {
       return "CIRCUIT TINKERER";
     }
 
-    if (value.includes("cyber") || value.includes("security")) {
+    if (
+      value.includes("cyber") ||
+      value.includes("security")
+    ) {
       return "DIGITAL SENTINEL";
     }
 
@@ -68,10 +74,17 @@ function BuilderProfile({ builderId, name, stack, photo }) {
   return (
     <div className="profile-page">
 
+      {/* BACKGROUND GRID */}
       <div className="profile-grid"></div>
 
-      {/* BACK BUTTON */}
+      {/* WAVES */}
+      <div className="profile-waves" aria-hidden="true">
+        <div className="wave wave-one"></div>
+        <div className="wave wave-two"></div>
+        <div className="wave wave-three"></div>
+      </div>
 
+      {/* BACK BUTTON */}
       <button
         className="profile-back-button"
         onClick={goBack}
@@ -80,14 +93,13 @@ function BuilderProfile({ builderId, name, stack, photo }) {
       </button>
 
       {/* HEADER */}
-
       <header className="profile-header">
 
         <div className="profile-logo">
           HH
         </div>
 
-        <div>
+        <div className="profile-brand-text">
           <p>HACKER HOUSE</p>
           <h1>GOA / 2026</h1>
         </div>
@@ -100,17 +112,15 @@ function BuilderProfile({ builderId, name, stack, photo }) {
       </header>
 
       {/* MAIN */}
-
       <main className="profile-container">
 
         <div className="profile-label">
-          BUILDER PROFILE
+          01 / BUILDER PROFILE
         </div>
 
         <section className="profile-card">
 
           {/* PHOTO */}
-
           <div className="profile-photo">
 
             {photo ? (
@@ -120,14 +130,17 @@ function BuilderProfile({ builderId, name, stack, photo }) {
               />
             ) : (
               <div className="profile-photo-placeholder">
-                HH
+                <span>HH</span>
+                <small>GOA / 26</small>
               </div>
             )}
+
+            <div className="photo-corner photo-corner-top"></div>
+            <div className="photo-corner photo-corner-bottom"></div>
 
           </div>
 
           {/* INFORMATION */}
-
           <div className="profile-content">
 
             <div className="profile-small-label">
@@ -143,7 +156,6 @@ function BuilderProfile({ builderId, name, stack, photo }) {
             </div>
 
             {/* STACK */}
-
             <div className="profile-section">
 
               <span>
@@ -163,7 +175,6 @@ function BuilderProfile({ builderId, name, stack, photo }) {
             </div>
 
             {/* DETAILS */}
-
             <div className="profile-details">
 
               <div>
@@ -202,6 +213,7 @@ function BuilderProfile({ builderId, name, stack, photo }) {
 
         </section>
 
+        {/* FOOTER */}
         <div className="profile-footer">
 
           <span>

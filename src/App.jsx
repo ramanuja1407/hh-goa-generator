@@ -10,10 +10,9 @@ import {
 
 import "./App.css";
 
-
-/* ==================================================
+/* =====================================================
    BUILDER ID
-================================================== */
+===================================================== */
 
 function getBuilderId() {
   const existingId = localStorage.getItem("hh_goa_builder_id");
@@ -34,10 +33,9 @@ function getBuilderId() {
   return newId;
 }
 
-
-/* ==================================================
+/* =====================================================
    BUILDER TITLE
-================================================== */
+===================================================== */
 
 function getBuilderTitle(stack) {
   const value = (stack || "").toLowerCase();
@@ -95,152 +93,9 @@ function getBuilderTitle(stack) {
   return "THE GOA BUILDER";
 }
 
-
-/* ==================================================
-   REALISTIC GOA OCEAN BACKGROUND
-================================================== */
-
-function OceanBackground() {
-  return (
-    <div className="ocean-background" aria-hidden="true">
-
-      {/* SKY */}
-
-      <div className="sky-layer"></div>
-
-      {/* SUN */}
-
-      <div className="sun">
-        <div className="sun-core"></div>
-      </div>
-
-
-      {/* DISTANT HORIZON */}
-
-      <div className="horizon-line"></div>
-
-
-      {/* SEA */}
-
-      <div className="sea-layer"></div>
-
-
-      {/* DISTANT WAVES */}
-
-      <svg
-        className="wave-svg wave-distant"
-        viewBox="0 0 1440 420"
-        preserveAspectRatio="none"
-      >
-        <path
-          className="wave-fill wave-fill-one"
-          d="
-            M0 170
-            C120 120 210 220 340 170
-            C470 120 560 220 700 165
-            C840 110 930 215 1070 160
-            C1200 110 1300 210 1440 155
-            L1440 420
-            L0 420
-            Z
-          "
-        />
-
-        <path
-          className="wave-line wave-line-one"
-          d="
-            M0 170
-            C120 120 210 220 340 170
-            C470 120 560 220 700 165
-            C840 110 930 215 1070 160
-            C1200 110 1300 210 1440 155
-          "
-        />
-      </svg>
-
-
-      {/* MIDDLE WAVES */}
-
-      <svg
-        className="wave-svg wave-middle"
-        viewBox="0 0 1440 420"
-        preserveAspectRatio="none"
-      >
-        <path
-          className="wave-fill wave-fill-two"
-          d="
-            M0 185
-            C110 125 230 245 360 180
-            C490 115 610 245 750 180
-            C890 115 1000 245 1140 175
-            C1270 115 1350 215 1440 165
-            L1440 420
-            L0 420
-            Z
-          "
-        />
-
-        <path
-          className="wave-line wave-line-two"
-          d="
-            M0 185
-            C110 125 230 245 360 180
-            C490 115 610 245 750 180
-            C890 115 1000 245 1140 175
-            C1270 115 1350 215 1440 165
-          "
-        />
-      </svg>
-
-
-      {/* FRONT WAVES */}
-
-      <svg
-        className="wave-svg wave-front"
-        viewBox="0 0 1440 420"
-        preserveAspectRatio="none"
-      >
-        <path
-          className="wave-fill wave-fill-three"
-          d="
-            M0 200
-            C100 145 210 255 330 195
-            C450 135 570 265 710 195
-            C850 125 970 260 1100 195
-            C1230 130 1340 240 1440 185
-            L1440 420
-            L0 420
-            Z
-          "
-        />
-
-        <path
-          className="wave-line wave-line-three"
-          d="
-            M0 200
-            C100 145 210 255 330 195
-            C450 135 570 265 710 195
-            C850 125 970 260 1100 195
-            C1230 130 1340 240 1440 185
-          "
-        />
-      </svg>
-
-
-      {/* FOAM LINES */}
-
-      <div className="foam foam-one"></div>
-      <div className="foam foam-two"></div>
-      <div className="foam foam-three"></div>
-
-    </div>
-  );
-}
-
-
-/* ==================================================
+/* =====================================================
    APP
-================================================== */
+===================================================== */
 
 function App() {
   const builderId = getBuilderId();
@@ -262,10 +117,9 @@ function App() {
   const isBuilderProfile =
     pathname.startsWith("/builder/");
 
-
-  /* ==================================================
-     SAVE LOCAL DATA
-  ================================================== */
+  /* =====================================================
+     SAVE LOCALLY
+  ===================================================== */
 
   useEffect(() => {
     localStorage.setItem("hh_goa_name", name);
@@ -275,16 +129,14 @@ function App() {
     localStorage.setItem("hh_goa_stack", stack);
   }, [stack]);
 
-
-  /* ==================================================
-     BUILDER PROFILE
-  ================================================== */
+  /* =====================================================
+     BUILDER PROFILE PAGE
+  ===================================================== */
 
   if (isBuilderProfile) {
-    const urlBuilderId =
-      decodeURIComponent(
-        pathname.split("/builder/")[1] || ""
-      );
+    const urlBuilderId = decodeURIComponent(
+      pathname.split("/builder/")[1] || ""
+    );
 
     return (
       <BuilderProfileLoader
@@ -293,10 +145,9 @@ function App() {
     );
   }
 
-
-  /* ==================================================
+  /* =====================================================
      PHOTO UPLOAD
-  ================================================== */
+  ===================================================== */
 
   const handlePhotoUpload = (event) => {
     const file = event.target.files?.[0];
@@ -317,10 +168,9 @@ function App() {
     reader.readAsDataURL(file);
   };
 
-
-  /* ==================================================
+  /* =====================================================
      STACK TAGS
-  ================================================== */
+  ===================================================== */
 
   const getStackTags = () => {
     if (!stack.trim()) {
@@ -334,25 +184,25 @@ function App() {
       .slice(0, 4);
   };
 
+  /* =====================================================
+     BUILDER TITLE
+  ===================================================== */
 
   const builderTitle = getBuilderTitle(stack);
 
-
-  /* ==================================================
-     PROFILE URL
-  ================================================== */
+  /* =====================================================
+     PUBLIC PROFILE URL
+  ===================================================== */
 
   const profileUrl =
     `${window.location.origin}/builder/${builderId}`;
 
-
-  /* ==================================================
+  /* =====================================================
      DOWNLOAD PNG
-  ================================================== */
+  ===================================================== */
 
   const downloadCard = async () => {
-    const card =
-      document.querySelector(".id-card");
+    const card = document.querySelector(".id-card");
 
     if (!card) return;
 
@@ -360,11 +210,10 @@ function App() {
       const dataUrl = await toPng(card, {
         pixelRatio: 2,
         cacheBust: true,
-        backgroundColor: "#080808",
+        backgroundColor: "#103f5c",
       });
 
-      const link =
-        document.createElement("a");
+      const link = document.createElement("a");
 
       link.download =
         `${name || "HH-Goa-Builder"}-2026.png`;
@@ -376,7 +225,6 @@ function App() {
       link.click();
 
       document.body.removeChild(link);
-
     } catch (error) {
       console.error(
         "PNG generation failed:",
@@ -389,10 +237,9 @@ function App() {
     }
   };
 
-
-  /* ==================================================
+  /* =====================================================
      SHARE ON X
-  ================================================== */
+  ===================================================== */
 
   const shareOnX = () => {
     const builderName =
@@ -418,10 +265,9 @@ ${builderId}
     );
   };
 
-
-  /* ==================================================
-     SAVE PROFILE
-  ================================================== */
+  /* =====================================================
+     SAVE + OPEN PROFILE
+  ===================================================== */
 
   const openProfile = async () => {
     if (!name.trim()) {
@@ -446,7 +292,6 @@ ${builderId}
 
       window.location.href =
         `/builder/${builderId}`;
-
     } catch (error) {
       console.error(
         "Could not save builder profile:",
@@ -456,26 +301,52 @@ ${builderId}
       alert(
         "Could not save your builder profile. Please try again."
       );
-
     } finally {
       setSaving(false);
     }
   };
 
-
-  /* ==================================================
+  /* =====================================================
      UI
-  ================================================== */
+  ===================================================== */
 
   return (
     <div className="app">
 
-      {/* REALISTIC ANIMATED OCEAN */}
+      {/* =================================================
+          BOTTOM OCEAN WAVES
+      ================================================= */}
 
-      <OceanBackground />
+      <div
+        className="goa-waves"
+        aria-hidden="true"
+      >
+        <div className="wave wave-1"></div>
+        <div className="wave wave-2"></div>
+        <div className="wave wave-3"></div>
+      </div>
 
+      {/* =================================================
+          PALM TREES
+      ================================================= */}
 
-      {/* HEADER */}
+      <div
+        className="goa-palm goa-palm-left"
+        aria-hidden="true"
+      >
+        🌴
+      </div>
+
+      <div
+        className="goa-palm goa-palm-right"
+        aria-hidden="true"
+      >
+        🌴
+      </div>
+
+      {/* =================================================
+          HEADER
+      ================================================= */}
 
       <header className="header">
 
@@ -486,7 +357,6 @@ ${builderId}
           </div>
 
           <div>
-
             <p className="eyebrow">
               HACKER HOUSE
             </p>
@@ -494,7 +364,6 @@ ${builderId}
             <h1>
               GOA 2026
             </h1>
-
           </div>
 
         </div>
@@ -511,26 +380,20 @@ ${builderId}
 
       </header>
 
-
-      {/* MAIN */}
+      {/* =================================================
+          MAIN
+      ================================================= */}
 
       <main className="container">
 
         <section className="hero">
 
           <div className="hero-label">
-
-            <span>
-              01
-            </span>
-
+            <span>01</span>
             CREATE YOUR IDENTITY
-
           </div>
 
-
           <h2>
-
             BUILD.
             <br />
 
@@ -541,28 +404,26 @@ ${builderId}
             <br />
 
             BELONG.
-
           </h2>
 
-
           <p className="description">
-
             Your Hacker House Goa identity
             starts here. Upload a photo,
             add your stack, and generate
             your unique builder card.
-
           </p>
 
         </section>
 
-
-        {/* WORKSPACE */}
+        {/* =================================================
+            WORKSPACE
+        ================================================= */}
 
         <section className="workspace">
 
-
-          {/* CONTROLS */}
+          {/* =================================================
+              CONTROLS
+          ================================================= */}
 
           <div className="controls">
 
@@ -573,7 +434,6 @@ ${builderId}
               </span>
 
               <div>
-
                 <strong>
                   YOUR DETAILS
                 </strong>
@@ -581,13 +441,11 @@ ${builderId}
                 <small>
                   Make it yours.
                 </small>
-
               </div>
 
             </div>
 
-
-            {/* PHOTO */}
+            {/* PHOTO UPLOAD */}
 
             <label className="upload-box">
 
@@ -602,11 +460,9 @@ ${builderId}
               </div>
 
               <strong>
-
                 {photo
                   ? "CHANGE PHOTO"
                   : "UPLOAD PHOTO"}
-
               </strong>
 
               <small>
@@ -614,7 +470,6 @@ ${builderId}
               </small>
 
             </label>
-
 
             {/* FORM */}
 
@@ -637,7 +492,6 @@ ${builderId}
 
               </label>
 
-
               <label>
 
                 <span>
@@ -657,7 +511,6 @@ ${builderId}
 
             </div>
 
-
             <div className="tip">
 
               <span>
@@ -671,8 +524,9 @@ ${builderId}
 
           </div>
 
-
-          {/* PREVIEW */}
+          {/* =================================================
+              PREVIEW
+          ================================================= */}
 
           <div className="preview-section">
 
@@ -696,8 +550,9 @@ ${builderId}
 
             </div>
 
-
-            {/* CARD */}
+            {/* =================================================
+                CARD
+            ================================================= */}
 
             <div className="card-area">
 
@@ -707,12 +562,11 @@ ${builderId}
 
                 <div className="card-glow"></div>
 
-
                 {/* TOP */}
 
                 <div className="card-top">
 
-                  <div>
+                  <div className="card-brand">
 
                     <strong>
                       HH
@@ -733,7 +587,6 @@ ${builderId}
                   </div>
 
                 </div>
-
 
                 {/* PHOTO */}
 
@@ -768,7 +621,6 @@ ${builderId}
 
                 </div>
 
-
                 {/* INFO */}
 
                 <div className="card-info">
@@ -781,7 +633,6 @@ ${builderId}
                     {name || "YOUR NAME"}
                   </h3>
 
-
                   <div className="stack-tags">
 
                     {getStackTags().map(
@@ -793,7 +644,6 @@ ${builderId}
                     )}
 
                   </div>
-
 
                   <div className="builder-title">
 
@@ -809,12 +659,13 @@ ${builderId}
 
                 </div>
 
-
-                {/* FOOTER */}
+                {/* =================================================
+                    FOOTER
+                ================================================= */}
 
                 <div className="card-footer">
 
-                  <div>
+                  <div className="footer-info">
 
                     <span>
                       BUILDER ID
@@ -826,8 +677,7 @@ ${builderId}
 
                   </div>
 
-
-                  <div>
+                  <div className="footer-info">
 
                     <span>
                       LOCATION
@@ -838,7 +688,6 @@ ${builderId}
                     </strong>
 
                   </div>
-
 
                   <div className="qr-code">
 
@@ -852,7 +701,6 @@ ${builderId}
 
                   </div>
 
-
                   <div className="footer-mark">
                     HH
                   </div>
@@ -863,8 +711,9 @@ ${builderId}
 
             </div>
 
-
-            {/* ACTION BUTTONS */}
+            {/* =================================================
+                ACTION BUTTONS
+            ================================================= */}
 
             <div className="action-buttons">
 
@@ -881,7 +730,6 @@ ${builderId}
 
               </button>
 
-
               <button
                 className="share-button"
                 onClick={shareOnX}
@@ -893,8 +741,7 @@ ${builderId}
 
             </div>
 
-
-            {/* PROFILE */}
+            {/* SAVE */}
 
             <button
               className="profile-preview-button"
@@ -914,8 +761,9 @@ ${builderId}
 
       </main>
 
-
-      {/* FOOTER */}
+      {/* =================================================
+          FOOTER
+      ================================================= */}
 
       <footer className="footer">
 
@@ -933,12 +781,13 @@ ${builderId}
   );
 }
 
-
-/* ==================================================
+/* =====================================================
    BUILDER PROFILE LOADER
-================================================== */
+===================================================== */
 
-function BuilderProfileLoader({ builderId }) {
+function BuilderProfileLoader({
+  builderId,
+}) {
 
   const [profile, setProfile] =
     useState(null);
@@ -948,7 +797,6 @@ function BuilderProfileLoader({ builderId }) {
 
   const [error, setError] =
     useState("");
-
 
   useEffect(() => {
 
@@ -962,7 +810,9 @@ function BuilderProfileLoader({ builderId }) {
         setError("");
 
         const data =
-          await getBuilderProfile(builderId);
+          await getBuilderProfile(
+            builderId
+          );
 
         if (!active) return;
 
@@ -1010,30 +860,65 @@ function BuilderProfileLoader({ builderId }) {
 
   }, [builderId]);
 
-
-  /* LOADING */
+  /* =====================================================
+     LOADING
+  ===================================================== */
 
   if (loading) {
 
     return (
-      <div className="profile-loading">
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "grid",
+          placeItems: "center",
+          background: "#080808",
+          color: "#ff6a00",
+          fontFamily:
+            "Inter, system-ui, sans-serif",
+          fontWeight: 800,
+          letterSpacing: "0.12em",
+          fontSize: "12px",
+        }}
+      >
         LOADING BUILDER PROFILE...
       </div>
     );
 
   }
 
-
-  /* ERROR */
+  /* =====================================================
+     ERROR
+  ===================================================== */
 
   if (error) {
 
     return (
-      <div className="profile-error">
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "grid",
+          placeItems: "center",
+          padding: "30px",
+          background: "#080808",
+          color: "#ffffff",
+          fontFamily:
+            "Inter, system-ui, sans-serif",
+          textAlign: "center",
+        }}
+      >
 
         <div>
 
-          <div className="profile-error-label">
+          <div
+            style={{
+              color: "#ff6a00",
+              fontSize: "12px",
+              fontWeight: 900,
+              letterSpacing: "0.15em",
+              marginBottom: "15px",
+            }}
+          >
             HH GOA / BUILDER PROFILE
           </div>
 
@@ -1044,6 +929,15 @@ function BuilderProfileLoader({ builderId }) {
           <button
             onClick={() => {
               window.location.href = "/";
+            }}
+            style={{
+              marginTop: "20px",
+              padding: "12px 18px",
+              border: "1px solid #ff6a00",
+              background: "transparent",
+              color: "#ff6a00",
+              cursor: "pointer",
+              fontWeight: 800,
             }}
           >
             ← BACK TO GENERATOR
@@ -1056,8 +950,9 @@ function BuilderProfileLoader({ builderId }) {
 
   }
 
-
-  /* PROFILE */
+  /* =====================================================
+     PROFILE
+  ===================================================== */
 
   return (
     <BuilderProfile
@@ -1068,6 +963,5 @@ function BuilderProfileLoader({ builderId }) {
     />
   );
 }
-
 
 export default App;
