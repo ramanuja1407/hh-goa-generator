@@ -1776,3 +1776,72 @@ button {
     color-scheme: dark;
   }
 }
+/* =========================================================
+   FORCE LIGHT GOA COLORS ON MOBILE
+   ========================================================= */
+
+html,
+body,
+#root {
+  background: #f6c453 !important;
+  color-scheme: light !important;
+}
+
+body {
+  background:
+    linear-gradient(
+      180deg,
+      #168aad 0%,
+      #2aa9c0 28%,
+      #f27c38 65%,
+      #ffd166 100%
+    ) !important;
+}
+
+.app {
+  background:
+    linear-gradient(
+      180deg,
+      #168aad 0%,
+      #2aa9c0 32%,
+      #f27c38 70%,
+      #ffd166 100%
+    ) !important;
+}
+
+.header {
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.id-card {
+  background:
+    linear-gradient(
+      145deg,
+      #168aad 0%,
+      #168aad 35%,
+      #f27c38 70%,
+      #e84a2a 100%
+    ) !important;
+}
+
+.photo-frame {
+  background:
+    linear-gradient(
+      180deg,
+      #168aad 0%,
+      #f27c38 55%,
+      #ffd166 100%
+    ) !important;
+}
+
+.form input,
+.upload-box,
+.profile-preview-button,
+.share-button {
+  background: rgba(20, 120, 145, 0.85) !important;
+}
+
+.download-button {
+  background: #ffd166 !important;
+  color: #173f5f !important;
+}
