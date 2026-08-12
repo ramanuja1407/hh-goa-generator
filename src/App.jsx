@@ -11,9 +11,9 @@ import {
 import "./App.css";
 
 
-/* --------------------------------------------------
+/* ==================================================
    BUILDER ID
--------------------------------------------------- */
+================================================== */
 
 function getBuilderId() {
   const existingId = localStorage.getItem(
@@ -40,9 +40,9 @@ function getBuilderId() {
 }
 
 
-/* --------------------------------------------------
+/* ==================================================
    BUILDER TITLE
--------------------------------------------------- */
+================================================== */
 
 function getBuilderTitle(stack) {
   const value = (stack || "").toLowerCase();
@@ -101,11 +101,140 @@ function getBuilderTitle(stack) {
 }
 
 
-/* --------------------------------------------------
+/* ==================================================
+   BEACH / OCEAN WAVE BACKGROUND
+================================================== */
+
+function BeachWaves() {
+  return (
+    <div
+      className="beach-waves"
+      aria-hidden="true"
+    >
+
+      {/* Soft ocean glow */}
+      <div className="ocean-glow"></div>
+
+      {/* Distant wave */}
+      <svg
+        className="wave wave-back"
+        viewBox="0 0 1440 320"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="
+            M0,190
+            C120,140 240,240 360,190
+            C480,140 600,240 720,190
+            C840,140 960,240 1080,190
+            C1200,140 1320,240 1440,190
+            L1440,320
+            L0,320
+            Z
+          "
+        />
+      </svg>
+
+
+      {/* Middle wave */}
+      <svg
+        className="wave wave-middle"
+        viewBox="0 0 1440 320"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="
+            M0,220
+            C100,150 200,270 300,210
+            C400,150 500,270 600,210
+            C700,150 800,270 900,210
+            C1000,150 1100,270 1200,210
+            C1300,150 1380,250 1440,210
+            L1440,320
+            L0,320
+            Z
+          "
+        />
+      </svg>
+
+
+      {/* Main ocean wave */}
+      <svg
+        className="wave wave-front"
+        viewBox="0 0 1440 320"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="
+            M0,240
+            C80,175 160,285 240,225
+            C320,165 400,285 480,225
+            C560,165 640,285 720,225
+            C800,165 880,285 960,225
+            C1040,165 1120,285 1200,225
+            C1280,165 1360,285 1440,225
+            L1440,320
+            L0,320
+            Z
+          "
+        />
+      </svg>
+
+
+      {/* Foam line 1 */}
+      <svg
+        className="foam foam-one"
+        viewBox="0 0 1440 180"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="
+            M0,105
+            C100,65 200,145 300,105
+            C400,65 500,145 600,105
+            C700,65 800,145 900,105
+            C1000,65 1100,145 1200,105
+            C1300,65 1380,135 1440,105
+          "
+        />
+      </svg>
+
+
+      {/* Foam line 2 */}
+      <svg
+        className="foam foam-two"
+        viewBox="0 0 1440 180"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="
+            M0,120
+            C120,80 240,155 360,115
+            C480,75 600,155 720,115
+            C840,75 960,155 1080,115
+            C1200,75 1320,155 1440,115
+          "
+        />
+      </svg>
+
+
+      {/* Small foam bubbles */}
+      <div className="foam-bubble bubble-one"></div>
+      <div className="foam-bubble bubble-two"></div>
+      <div className="foam-bubble bubble-three"></div>
+      <div className="foam-bubble bubble-four"></div>
+
+    </div>
+  );
+}
+
+
+/* ==================================================
    APP
--------------------------------------------------- */
+================================================== */
 
 function App() {
+
   const builderId = getBuilderId();
 
   const [name, setName] = useState(
@@ -120,21 +249,15 @@ function App() {
 
   const [saving, setSaving] = useState(false);
 
-  const [profileLoading, setProfileLoading] =
-    useState(false);
-
-  const [profileError, setProfileError] =
-    useState("");
-
   const pathname = window.location.pathname;
 
   const isBuilderProfile =
     pathname.startsWith("/builder/");
 
 
-  /* --------------------------------------------------
-     SAVE NAME + STACK LOCALLY
-  -------------------------------------------------- */
+  /* ==================================================
+     LOCAL STORAGE
+  ================================================== */
 
   useEffect(() => {
     localStorage.setItem(
@@ -142,6 +265,7 @@ function App() {
       name
     );
   }, [name]);
+
 
   useEffect(() => {
     localStorage.setItem(
@@ -151,11 +275,12 @@ function App() {
   }, [stack]);
 
 
-  /* --------------------------------------------------
-     BUILDER PROFILE PAGE
-  -------------------------------------------------- */
+  /* ==================================================
+     PUBLIC BUILDER PROFILE
+  ================================================== */
 
   if (isBuilderProfile) {
+
     const urlBuilderId =
       decodeURIComponent(
         pathname.split("/builder/")[1] || ""
@@ -169,11 +294,12 @@ function App() {
   }
 
 
-  /* --------------------------------------------------
+  /* ==================================================
      PHOTO UPLOAD
-  -------------------------------------------------- */
+  ================================================== */
 
   const handlePhotoUpload = (event) => {
+
     const file =
       event.target.files?.[0];
 
@@ -194,11 +320,12 @@ function App() {
   };
 
 
-  /* --------------------------------------------------
+  /* ==================================================
      STACK TAGS
-  -------------------------------------------------- */
+  ================================================== */
 
   const getStackTags = () => {
+
     if (!stack.trim()) {
       return ["YOUR STACK"];
     }
@@ -211,38 +338,41 @@ function App() {
   };
 
 
-  /* --------------------------------------------------
-     BUILDER TITLE
-  -------------------------------------------------- */
+  /* ==================================================
+     TITLE
+  ================================================== */
 
   const builderTitle =
     getBuilderTitle(stack);
 
 
-  /* --------------------------------------------------
-     PUBLIC PROFILE URL
-  -------------------------------------------------- */
+  /* ==================================================
+     PROFILE URL
+  ================================================== */
 
   const profileUrl =
     `${window.location.origin}/builder/${builderId}`;
 
 
-  /* --------------------------------------------------
+  /* ==================================================
      DOWNLOAD PNG
-  -------------------------------------------------- */
+  ================================================== */
 
   const downloadCard = async () => {
+
     const card =
       document.querySelector(".id-card");
 
     if (!card) return;
 
     try {
-      const dataUrl = await toPng(card, {
-        pixelRatio: 2,
-        cacheBust: true,
-        backgroundColor: "#080808",
-      });
+
+      const dataUrl =
+        await toPng(card, {
+          pixelRatio: 2,
+          cacheBust: true,
+          backgroundColor: "#080808",
+        });
 
       const link =
         document.createElement("a");
@@ -259,6 +389,7 @@ function App() {
       document.body.removeChild(link);
 
     } catch (error) {
+
       console.error(
         "PNG generation failed:",
         error
@@ -271,15 +402,17 @@ function App() {
   };
 
 
-  /* --------------------------------------------------
+  /* ==================================================
      SHARE ON X
-  -------------------------------------------------- */
+  ================================================== */
 
   const shareOnX = () => {
+
     const builderName =
       name || "a Hacker House Goa builder";
 
-    const text = `I just created my HH Goa 2026 Builder ID 🚀
+    const text =
+      `I just created my HH Goa 2026 Builder ID 🚀
 
 ${builderName}
 ${builderTitle}
@@ -300,11 +433,12 @@ ${builderId}
   };
 
 
-  /* --------------------------------------------------
-     SAVE TO SUPABASE + OPEN PROFILE
-  -------------------------------------------------- */
+  /* ==================================================
+     SAVE PROFILE
+  ================================================== */
 
   const openProfile = async () => {
+
     if (!name.trim()) {
       alert("Please enter your name first.");
       return;
@@ -318,6 +452,7 @@ ${builderId}
     setSaving(true);
 
     try {
+
       await saveBuilderProfile({
         builderId,
         name: name.trim(),
@@ -329,6 +464,7 @@ ${builderId}
         `/builder/${builderId}`;
 
     } catch (error) {
+
       console.error(
         "Could not save builder profile:",
         error
@@ -339,38 +475,23 @@ ${builderId}
       );
 
     } finally {
+
       setSaving(false);
+
     }
   };
 
 
-  /* --------------------------------------------------
+  /* ==================================================
      UI
-  -------------------------------------------------- */
+  ================================================== */
 
   return (
     <div className="app">
 
-      {/* =================================================
-          GOA PALM TREES
+      {/* BEACH WAVES */}
 
-          These are inside the page so they scroll
-          naturally with the website.
-         ================================================= */}
-
-      <div
-        className="goa-palm goa-palm-left"
-        aria-hidden="true"
-      >
-        🌴
-      </div>
-
-      <div
-        className="goa-palm goa-palm-right"
-        aria-hidden="true"
-      >
-        🌴
-      </div>
+      <BeachWaves />
 
 
       {/* HEADER */}
@@ -483,7 +604,7 @@ ${builderId}
             </div>
 
 
-            {/* PHOTO UPLOAD */}
+            {/* PHOTO */}
 
             <label className="upload-box">
 
@@ -498,11 +619,9 @@ ${builderId}
               </div>
 
               <strong>
-
                 {photo
                   ? "CHANGE PHOTO"
                   : "UPLOAD PHOTO"}
-
               </strong>
 
               <small>
@@ -738,8 +857,6 @@ ${builderId}
                   </div>
 
 
-                  {/* QR */}
-
                   <div className="qr-code">
 
                     <QRCodeSVG
@@ -794,7 +911,7 @@ ${builderId}
             </div>
 
 
-            {/* SAVE + PROFILE */}
+            {/* PROFILE */}
 
             <button
               className="profile-preview-button"
@@ -834,9 +951,9 @@ ${builderId}
 }
 
 
-/* --------------------------------------------------
+/* ==================================================
    BUILDER PROFILE LOADER
--------------------------------------------------- */
+================================================== */
 
 function BuilderProfileLoader({
   builderId,
