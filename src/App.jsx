@@ -11,9 +11,9 @@ import {
 import "./App.css";
 
 
-/* ==================================================
+/* =====================================================
    BUILDER ID
-================================================== */
+===================================================== */
 
 function getBuilderId() {
   const existingId = localStorage.getItem(
@@ -40,9 +40,9 @@ function getBuilderId() {
 }
 
 
-/* ==================================================
+/* =====================================================
    BUILDER TITLE
-================================================== */
+===================================================== */
 
 function getBuilderTitle(stack) {
   const value = (stack || "").toLowerCase();
@@ -101,140 +101,11 @@ function getBuilderTitle(stack) {
 }
 
 
-/* ==================================================
-   BEACH / OCEAN WAVE BACKGROUND
-================================================== */
-
-function BeachWaves() {
-  return (
-    <div
-      className="beach-waves"
-      aria-hidden="true"
-    >
-
-      {/* Soft ocean glow */}
-      <div className="ocean-glow"></div>
-
-      {/* Distant wave */}
-      <svg
-        className="wave wave-back"
-        viewBox="0 0 1440 320"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="
-            M0,190
-            C120,140 240,240 360,190
-            C480,140 600,240 720,190
-            C840,140 960,240 1080,190
-            C1200,140 1320,240 1440,190
-            L1440,320
-            L0,320
-            Z
-          "
-        />
-      </svg>
-
-
-      {/* Middle wave */}
-      <svg
-        className="wave wave-middle"
-        viewBox="0 0 1440 320"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="
-            M0,220
-            C100,150 200,270 300,210
-            C400,150 500,270 600,210
-            C700,150 800,270 900,210
-            C1000,150 1100,270 1200,210
-            C1300,150 1380,250 1440,210
-            L1440,320
-            L0,320
-            Z
-          "
-        />
-      </svg>
-
-
-      {/* Main ocean wave */}
-      <svg
-        className="wave wave-front"
-        viewBox="0 0 1440 320"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="
-            M0,240
-            C80,175 160,285 240,225
-            C320,165 400,285 480,225
-            C560,165 640,285 720,225
-            C800,165 880,285 960,225
-            C1040,165 1120,285 1200,225
-            C1280,165 1360,285 1440,225
-            L1440,320
-            L0,320
-            Z
-          "
-        />
-      </svg>
-
-
-      {/* Foam line 1 */}
-      <svg
-        className="foam foam-one"
-        viewBox="0 0 1440 180"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="
-            M0,105
-            C100,65 200,145 300,105
-            C400,65 500,145 600,105
-            C700,65 800,145 900,105
-            C1000,65 1100,145 1200,105
-            C1300,65 1380,135 1440,105
-          "
-        />
-      </svg>
-
-
-      {/* Foam line 2 */}
-      <svg
-        className="foam foam-two"
-        viewBox="0 0 1440 180"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="
-            M0,120
-            C120,80 240,155 360,115
-            C480,75 600,155 720,115
-            C840,75 960,155 1080,115
-            C1200,75 1320,155 1440,115
-          "
-        />
-      </svg>
-
-
-      {/* Small foam bubbles */}
-      <div className="foam-bubble bubble-one"></div>
-      <div className="foam-bubble bubble-two"></div>
-      <div className="foam-bubble bubble-three"></div>
-      <div className="foam-bubble bubble-four"></div>
-
-    </div>
-  );
-}
-
-
-/* ==================================================
+/* =====================================================
    APP
-================================================== */
+===================================================== */
 
 function App() {
-
   const builderId = getBuilderId();
 
   const [name, setName] = useState(
@@ -255,9 +126,9 @@ function App() {
     pathname.startsWith("/builder/");
 
 
-  /* ==================================================
-     LOCAL STORAGE
-  ================================================== */
+  /* ===================================================
+     SAVE NAME LOCALLY
+  =================================================== */
 
   useEffect(() => {
     localStorage.setItem(
@@ -267,6 +138,10 @@ function App() {
   }, [name]);
 
 
+  /* ===================================================
+     SAVE STACK LOCALLY
+  =================================================== */
+
   useEffect(() => {
     localStorage.setItem(
       "hh_goa_stack",
@@ -275,12 +150,11 @@ function App() {
   }, [stack]);
 
 
-  /* ==================================================
-     PUBLIC BUILDER PROFILE
-  ================================================== */
+  /* ===================================================
+     BUILDER PROFILE ROUTE
+  =================================================== */
 
   if (isBuilderProfile) {
-
     const urlBuilderId =
       decodeURIComponent(
         pathname.split("/builder/")[1] || ""
@@ -294,12 +168,11 @@ function App() {
   }
 
 
-  /* ==================================================
+  /* ===================================================
      PHOTO UPLOAD
-  ================================================== */
+  =================================================== */
 
   const handlePhotoUpload = (event) => {
-
     const file =
       event.target.files?.[0];
 
@@ -320,12 +193,11 @@ function App() {
   };
 
 
-  /* ==================================================
+  /* ===================================================
      STACK TAGS
-  ================================================== */
+  =================================================== */
 
   const getStackTags = () => {
-
     if (!stack.trim()) {
       return ["YOUR STACK"];
     }
@@ -338,41 +210,38 @@ function App() {
   };
 
 
-  /* ==================================================
-     TITLE
-  ================================================== */
+  /* ===================================================
+     BUILDER TITLE
+  =================================================== */
 
   const builderTitle =
     getBuilderTitle(stack);
 
 
-  /* ==================================================
-     PROFILE URL
-  ================================================== */
+  /* ===================================================
+     PUBLIC PROFILE URL
+  =================================================== */
 
   const profileUrl =
     `${window.location.origin}/builder/${builderId}`;
 
 
-  /* ==================================================
+  /* ===================================================
      DOWNLOAD PNG
-  ================================================== */
+  =================================================== */
 
   const downloadCard = async () => {
-
     const card =
       document.querySelector(".id-card");
 
     if (!card) return;
 
     try {
-
-      const dataUrl =
-        await toPng(card, {
-          pixelRatio: 2,
-          cacheBust: true,
-          backgroundColor: "#080808",
-        });
+      const dataUrl = await toPng(card, {
+        pixelRatio: 2,
+        cacheBust: true,
+        backgroundColor: "#080808",
+      });
 
       const link =
         document.createElement("a");
@@ -389,7 +258,6 @@ function App() {
       document.body.removeChild(link);
 
     } catch (error) {
-
       console.error(
         "PNG generation failed:",
         error
@@ -402,17 +270,15 @@ function App() {
   };
 
 
-  /* ==================================================
+  /* ===================================================
      SHARE ON X
-  ================================================== */
+  =================================================== */
 
   const shareOnX = () => {
-
     const builderName =
       name || "a Hacker House Goa builder";
 
-    const text =
-      `I just created my HH Goa 2026 Builder ID 🚀
+    const text = `I just created my HH Goa 2026 Builder ID 🚀
 
 ${builderName}
 ${builderTitle}
@@ -433,12 +299,11 @@ ${builderId}
   };
 
 
-  /* ==================================================
-     SAVE PROFILE
-  ================================================== */
+  /* ===================================================
+     SAVE TO SUPABASE
+  =================================================== */
 
   const openProfile = async () => {
-
     if (!name.trim()) {
       alert("Please enter your name first.");
       return;
@@ -452,7 +317,6 @@ ${builderId}
     setSaving(true);
 
     try {
-
       await saveBuilderProfile({
         builderId,
         name: name.trim(),
@@ -464,7 +328,6 @@ ${builderId}
         `/builder/${builderId}`;
 
     } catch (error) {
-
       console.error(
         "Could not save builder profile:",
         error
@@ -475,26 +338,53 @@ ${builderId}
       );
 
     } finally {
-
       setSaving(false);
-
     }
   };
 
 
-  /* ==================================================
-     UI
-  ================================================== */
+  /* ===================================================
+     MAIN UI
+  =================================================== */
 
   return (
     <div className="app">
 
-      {/* BEACH WAVES */}
+      {/* =================================================
+          REALISTIC GOA SKY + SEA BACKGROUND
+      ================================================= */}
 
-      <BeachWaves />
+      <div
+        className="goa-background"
+        aria-hidden="true"
+      >
+
+        <div className="goa-sun"></div>
+
+        <div className="goa-sea">
+
+          <div className="wave wave-1"></div>
+
+          <div className="wave wave-2"></div>
+
+          <div className="wave wave-3"></div>
+
+          <div className="wave wave-4"></div>
+
+          <div className="wave wave-5"></div>
+
+          <div className="wave wave-6"></div>
+
+          <div className="wave wave-7"></div>
+
+        </div>
+
+      </div>
 
 
-      {/* HEADER */}
+      {/* =================================================
+          HEADER
+      ================================================= */}
 
       <header className="header">
 
@@ -518,6 +408,7 @@ ${builderId}
 
         </div>
 
+
         <div className="header-right">
 
           <span className="live-dot"></span>
@@ -531,7 +422,9 @@ ${builderId}
       </header>
 
 
-      {/* MAIN */}
+      {/* =================================================
+          MAIN
+      ================================================= */}
 
       <main className="container">
 
@@ -547,9 +440,11 @@ ${builderId}
 
           </div>
 
+
           <h2>
 
             BUILD.
+
             <br />
 
             <span>
@@ -561,6 +456,7 @@ ${builderId}
             BELONG.
 
           </h2>
+
 
           <p className="description">
 
@@ -574,12 +470,16 @@ ${builderId}
         </section>
 
 
-        {/* WORKSPACE */}
+        {/* =================================================
+            WORKSPACE
+        ================================================= */}
 
         <section className="workspace">
 
 
-          {/* CONTROLS */}
+          {/* =================================================
+              CONTROLS
+          ================================================= */}
 
           <div className="controls">
 
@@ -604,7 +504,7 @@ ${builderId}
             </div>
 
 
-            {/* PHOTO */}
+            {/* PHOTO UPLOAD */}
 
             <label className="upload-box">
 
@@ -619,9 +519,11 @@ ${builderId}
               </div>
 
               <strong>
+
                 {photo
                   ? "CHANGE PHOTO"
                   : "UPLOAD PHOTO"}
+
               </strong>
 
               <small>
@@ -687,7 +589,9 @@ ${builderId}
           </div>
 
 
-          {/* PREVIEW */}
+          {/* =================================================
+              PREVIEW
+          ================================================= */}
 
           <div className="preview-section">
 
@@ -712,7 +616,9 @@ ${builderId}
             </div>
 
 
-            {/* CARD */}
+            {/* =================================================
+                CARD
+            ================================================= */}
 
             <div className="card-area">
 
@@ -723,7 +629,7 @@ ${builderId}
                 <div className="card-glow"></div>
 
 
-                {/* TOP */}
+                {/* CARD TOP */}
 
                 <div className="card-top">
 
@@ -738,6 +644,7 @@ ${builderId}
                     </span>
 
                   </div>
+
 
                   <div className="verified">
 
@@ -777,14 +684,19 @@ ${builderId}
 
                   )}
 
-                  <div className="photo-corner top-left"></div>
 
-                  <div className="photo-corner bottom-right"></div>
+                  <div
+                    className="photo-corner top-left"
+                  ></div>
+
+                  <div
+                    className="photo-corner bottom-right"
+                  ></div>
 
                 </div>
 
 
-                {/* INFO */}
+                {/* CARD INFO */}
 
                 <div className="card-info">
 
@@ -827,7 +739,7 @@ ${builderId}
                 </div>
 
 
-                {/* FOOTER */}
+                {/* CARD FOOTER */}
 
                 <div className="card-footer">
 
@@ -857,6 +769,8 @@ ${builderId}
                   </div>
 
 
+                  {/* QR CODE */}
+
                   <div className="qr-code">
 
                     <QRCodeSVG
@@ -881,7 +795,9 @@ ${builderId}
             </div>
 
 
-            {/* ACTION BUTTONS */}
+            {/* =================================================
+                ACTION BUTTONS
+            ================================================= */}
 
             <div className="action-buttons">
 
@@ -911,7 +827,7 @@ ${builderId}
             </div>
 
 
-            {/* PROFILE */}
+            {/* SAVE + PROFILE */}
 
             <button
               className="profile-preview-button"
@@ -932,7 +848,9 @@ ${builderId}
       </main>
 
 
-      {/* FOOTER */}
+      {/* =================================================
+          FOOTER
+      ================================================= */}
 
       <footer className="footer">
 
@@ -951,9 +869,9 @@ ${builderId}
 }
 
 
-/* ==================================================
+/* =====================================================
    BUILDER PROFILE LOADER
-================================================== */
+===================================================== */
 
 function BuilderProfileLoader({
   builderId,
@@ -978,6 +896,7 @@ function BuilderProfileLoader({
       try {
 
         setLoading(true);
+
         setError("");
 
         const data =
@@ -1032,7 +951,9 @@ function BuilderProfileLoader({
   }, [builderId]);
 
 
-  /* LOADING */
+  /* ===================================================
+     LOADING
+  =================================================== */
 
   if (loading) {
 
@@ -1042,8 +963,8 @@ function BuilderProfileLoader({
           minHeight: "100vh",
           display: "grid",
           placeItems: "center",
-          background: "#080808",
-          color: "#ff6a00",
+          background: "#063f57",
+          color: "#ffe29a",
           fontFamily:
             "Inter, system-ui, sans-serif",
           fontWeight: 800,
@@ -1058,7 +979,9 @@ function BuilderProfileLoader({
   }
 
 
-  /* ERROR */
+  /* ===================================================
+     ERROR
+  =================================================== */
 
   if (error) {
 
@@ -1069,7 +992,7 @@ function BuilderProfileLoader({
           display: "grid",
           placeItems: "center",
           padding: "30px",
-          background: "#080808",
+          background: "#063f57",
           color: "#ffffff",
           fontFamily:
             "Inter, system-ui, sans-serif",
@@ -1081,7 +1004,7 @@ function BuilderProfileLoader({
 
           <div
             style={{
-              color: "#ff6a00",
+              color: "#ffe29a",
               fontSize: "12px",
               fontWeight: 900,
               letterSpacing: "0.15em",
@@ -1102,9 +1025,9 @@ function BuilderProfileLoader({
             style={{
               marginTop: "20px",
               padding: "12px 18px",
-              border: "1px solid #ff6a00",
+              border: "1px solid #ffe29a",
               background: "transparent",
-              color: "#ff6a00",
+              color: "#ffe29a",
               cursor: "pointer",
               fontWeight: 800,
             }}
@@ -1120,7 +1043,9 @@ function BuilderProfileLoader({
   }
 
 
-  /* PROFILE */
+  /* ===================================================
+     PROFILE
+  =================================================== */
 
   return (
     <BuilderProfile
